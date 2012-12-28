@@ -380,7 +380,7 @@ class LogFileHandler extends AbstractLogHandler {
         if ($logFileName != "") {
             $this->logFileName = $logFileName;
         } else {
-            $this->logFileName = BASE_DIR . "tmp/logs/output.log";
+            $this->logFileName = "/tmp/output.log";
         }
     }
 
