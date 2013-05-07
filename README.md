@@ -6,8 +6,8 @@ PHP Logger
 $logger = Logger::getLogger(__CLASS__, $options);
 ```
 where `$options` is an associative array of options, below are some possible options, 
-if $options is null it inherits default parameters, L
-ogging Level `INFO`, and writes to `/tmp/output.log`
+if $options is null it inherits default parameters, 
+Logging Level `INFO`, and writes to `/tmp/output.log`
 ```php
 
 $options = array(
@@ -26,6 +26,15 @@ $options = array(
    	)
 );
 ```
+Log Levels
+<table>
+<tr><td>FATAL</td><td>A serious, and unrecoverable error occured</td></tr>
+<tr><td>ERROR</td><td>A serious error, i.e. a DB call failed, but perhaps is recoverable</td></tr>
+<tr><td>WARN</td><td>Notify of potential bugs, that while don't break the site, could result in undefined behavior</td></tr>
+<tr><td>INFO</td><td>General level, default logging level</td></tr>
+<tr><td>DEBUG</td><td>Detailed code primarily used to help debug general problems</td></tr>
+<tr><td>TRACE</td><td>Very fine tuned in depth messages</td></tr>
+</table>
 
 Currently Log Formatters must be set at the handler level.
 <table>
