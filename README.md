@@ -2,8 +2,6 @@ log4php
 =======
 
 PHP Logger
-
-Configuration options
 ```php
 $logger = Logger::getLogger(__CLASS__, $options);
 ```
