@@ -451,9 +451,9 @@ class LogSQLHandler extends AbstractLogHandler {
     }
 
     public function publish(LogRecord $record) {
-        $sql = "INSERT INTO `log` (log_level, date, resource, msg) VALUES ('{$record->getLevel()}','{$record->getTime()}', ?, ?);";
+        $sql = "INSERT INTO `log` (log_level, date, resource, msg) VALUES (?,?, ?, ?);";
         $statement = $this->db->prepare($sql);
-        $statement->bind_param("ss", $record->getResource(), $record->getMessage());
+        $statement->bind_param("ssss", $record->getLevel(), $record->getTime(), $record->getResource(), $record->getMessage());
         if (!$statement->execute()) {
             return array('status' => 'failure', 'msg' => 'SQL Error');
         }
@@ -475,7 +475,7 @@ class LogSQLHandler extends AbstractLogHandler {
 		`date` DATETIME NOT NULL,
 		`resource` VARCHAR( 128 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
 		`msg` VARCHAR( 1024 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL
-		) ENGINE = MYISAM;";
+		) ENGINE = INNODB;";
         $this->db->query($sql);
     }
 
